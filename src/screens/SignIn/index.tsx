@@ -28,7 +28,29 @@ export function SignIn() {
   }
 
   async function handleSignInWithEmailAndPassword() {
-    const { user } = await auth().signInWithEmailAndPassword(email, password);
+    auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(({ user }) => {
+        console.log(user);
+      })
+      .catch((error) => {
+        if (
+          error.code === "auth/user-not-found" ||
+          error.code === "auth/wrong-password"
+        ) {
+          Alert.alert("User not found. Invalid user or password.");
+        }
+      });
+  }
+
+  async function handleForgotPassword() {
+    auth()
+      .sendPasswordResetEmail(email)
+      .then(() => {
+        Alert.alert(
+          "We have sent a link to your email to reset your password."
+        );
+      });
   }
 
   return (
@@ -47,7 +69,7 @@ export function SignIn() {
       <Button title="Entrar" onPress={handleSignInWithEmailAndPassword} />
 
       <Account>
-        <ButtonText title="Recuperar senha" onPress={() => {}} />
+        <ButtonText title="Recuperar senha" onPress={handleForgotPassword} />
         <ButtonText
           title="Criar minha conta"
           onPress={handleCreateUserAccount}
