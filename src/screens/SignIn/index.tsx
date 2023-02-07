@@ -56,15 +56,15 @@ export function SignIn() {
   return (
     <Container>
       <Title>MyShopping</Title>
-      <Subtitle>monte sua lista de compra te ajudar nas compras</Subtitle>
+      <Subtitle>monte sua lista para te ajudar nas compras 🛍</Subtitle>
 
       <Input
-        placeholder="e-mail"
+        placeholder="E-mail"
         onChangeText={setEmail}
         keyboardType="email-address"
       />
 
-      <Input placeholder="senha" onChangeText={setPassword} secureTextEntry />
+      <Input placeholder="Senha" onChangeText={setPassword} secureTextEntry />
 
       <Button title="Entrar" onPress={handleSignInWithEmailAndPassword} />
 
