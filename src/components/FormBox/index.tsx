@@ -23,6 +23,9 @@ export function FormBox() {
         Alert.alert("Product added successfully");
       })
       .catch((error) => console.log(error));
+
+    setDescription("");
+    setQuantity(0);
   }
 
   return (
@@ -30,6 +33,7 @@ export function FormBox() {
       <Input
         placeholder="Nome do produto"
         size="medium"
+        value={description}
         onChangeText={setDescription}
       />
 
@@ -37,6 +41,7 @@ export function FormBox() {
         placeholder="0"
         keyboardType="numeric"
         size="small"
+        value={quantity.toString()}
         onChangeText={(value) => setQuantity(Number(value))}
         style={{ marginHorizontal: 8 }}
       />
